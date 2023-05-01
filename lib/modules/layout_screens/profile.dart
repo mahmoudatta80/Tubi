@@ -12,10 +12,10 @@ class Profile extends StatelessWidget {
     TextEditingController phoneController = TextEditingController();
 
     return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Consumer<MyProvider>(
@@ -26,7 +26,7 @@ class Profile extends StatelessWidget {
                     ? CircleAvatar(
                         radius: 70,
                         backgroundColor: Colors.grey.shade400,
-                        backgroundImage: AssetImage(
+                        backgroundImage: const AssetImage(
                           'assets/images/person.jpg',
                         ),
                       )
@@ -48,7 +48,7 @@ class Profile extends StatelessWidget {
                     hoverColor: Colors.transparent,
                     focusColor: Colors.transparent,
                     onPressed: myProvider.uploadImage,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.camera_alt_outlined,
                     ),
                   ),
@@ -56,7 +56,7 @@ class Profile extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Padding(
@@ -158,7 +158,7 @@ class Profile extends StatelessWidget {
                     hoverColor: Theme.of(context).primaryColorLight,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 ElevatedButton(
@@ -172,7 +172,7 @@ class Profile extends StatelessWidget {
                       ),
                     ),
                     minimumSize: MaterialStateProperty.all(
-                      Size(
+                      const Size(
                         double.infinity,
                         50,
                       ),

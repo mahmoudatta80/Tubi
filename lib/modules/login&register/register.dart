@@ -208,7 +208,40 @@ class Register extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'OR',
+                      style: Theme.of(context).textTheme.headline2,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Theme.of(context).primaryColor,
+                          radius: 17,
+                          backgroundImage: const AssetImage(
+                            'assets/images/git.png',
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Theme.of(context).primaryColor,
+                          radius: 17,
+                          backgroundImage: const AssetImage(
+                            'assets/images/chrome.png',
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           'if you have an account',
