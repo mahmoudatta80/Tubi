@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/modules/splash.dart';
+import 'package:movie_app/shared/network/local/cache_helper/shared_preference.dart';
 import 'package:movie_app/shared/network/remote/dio_helper.dart';
 import 'package:movie_app/shared/styles/theme.dart';
 import 'package:provider/provider.dart';
 import 'shared/network/local/state_management/my_provider.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
   DioHelper.init();
+  await CacheHelper.init();
+
+  bool? isLight = CacheHelper.getMode();
 
   runApp(
     ChangeNotifierProvider<MyProvider>(
-      create: (context) => MyProvider(),
+      create: (context) => MyProvider()..changeAppMode(isLight: isLight),
       child: const MyApp(),
     ),
   );
@@ -22,7 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: Provider.of<MyProvider>(context, listen: true).isLight
+      theme: Provider.of<MyProvider>(context).isLight
           ? CustomTheme.lightTheme
           : CustomTheme.darkTheme,
       debugShowCheckedModeBanner: false,

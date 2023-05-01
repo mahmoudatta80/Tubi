@@ -5,17 +5,28 @@ import 'package:image_picker/image_picker.dart';
 import 'package:movie_app/models/api_models/movie_list.dart';
 import 'package:movie_app/models/api_models/movie_model.dart';
 import 'package:movie_app/models/db_models/save_model.dart';
+import 'package:movie_app/shared/network/local/cache_helper/shared_preference.dart';
 import 'package:movie_app/shared/network/remote/dio_helper.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class MyProvider extends ChangeNotifier {
-  bool isLight = true;
+  bool isLight = false;
 
-  changeThemeData() {
-    isLight = !isLight;
+  checkIsTrue(bool? isLight) {
+    if(isLight != null) {
+      this.isLight = isLight;
+    } else {
+      this.isLight = !this.isLight;
+      CacheHelper.setMode(this.isLight);
+    }
+  }
+
+  changeAppMode({bool? isLight}) {
+    checkIsTrue(isLight);
     notifyListeners();
   }
+
 
   bool value = false;
 
@@ -52,13 +63,13 @@ class MyProvider extends ChangeNotifier {
   List<Movie> movies = [];
   Map<int, bool> saved = {};
 
-  getAllMovies(MovieList value) {
-    value.mainData.forEach((movie) {
+  fillInTheMovieList(MovieList value) {
+    for (var movie in value.mainData) {
       movies.add(movie);
-    });
+    }
   }
 
-  createMapForSavedItem(Movie movie) {
+  fillInTheSavedMap(Movie movie) {
     saved.addAll({
       movie.rank: false,
     });
@@ -72,10 +83,10 @@ class MyProvider extends ChangeNotifier {
   }
 
   createSavedMapAndHandleMoviesSearch() {
-    movies.forEach((movie) {
-      createMapForSavedItem(movie);
+    for (var movie in movies) {
+      fillInTheSavedMap(movie);
       handleSearchForAllMovies(movie);
-    });
+    }
   }
 
   addedSavedItem(saveItem) {
@@ -89,22 +100,22 @@ class MyProvider extends ChangeNotifier {
     });
   }
 
-  AddedSavedItemAndHandleSearchForSavedMovie(List value) {
-    value.forEach((saveItem) {
+  addedSavedItemAndHandleSearchForSavedMovie(List value) {
+    for (var saveItem in value) {
       addedSavedItem(saveItem);
       handleSearchForSavedMovie(saveItem);
-    });
+    }
   }
 
   handleSavedMovies() {
     readAllSaveList().then((value) {
-      AddedSavedItemAndHandleSearchForSavedMovie(value);
+      addedSavedItemAndHandleSearchForSavedMovie(value);
     });
   }
 
-  methodEleven() {
+  getAllMoviesAndHandleSearch() {
     DioHelper.getAllMovies().then((value) {
-      getAllMovies(value);
+      fillInTheMovieList(value);
     }).then((value) {
       createSavedMapAndHandleMoviesSearch();
     }).then((value) {
@@ -112,8 +123,8 @@ class MyProvider extends ChangeNotifier {
     });
   }
 
-  handleAllMovies() {
-    if (movies.length == 0) methodEleven();
+  handleMovies() {
+    if (movies.isEmpty) getAllMoviesAndHandleSearch();
     notifyListeners();
   }
 

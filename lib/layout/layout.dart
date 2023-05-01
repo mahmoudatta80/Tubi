@@ -35,7 +35,7 @@ class Layout extends StatelessWidget {
                 IconBroken.Filter,
               ),
               onPressed: () {
-                myProvider.changeThemeData();
+                myProvider.changeAppMode();
               },
             ),
           ],

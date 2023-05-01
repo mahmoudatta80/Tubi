@@ -166,7 +166,7 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          myProvider.handleAllMovies();
+                          myProvider.handleMovies();
                           Navigator.of(context).push(
                             PageTransition(
                               child: const Layout(),
@@ -196,7 +196,7 @@ class Login extends StatelessWidget {
                                   Colors.grey.shade300),
                             ),
                             onPressed: () {
-                              myProvider.handleAllMovies();
+                              myProvider.handleMovies();
                               Navigator.of(context).push(
                                 PageTransition(
                                   child: const Register(),

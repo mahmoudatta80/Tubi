@@ -78,7 +78,7 @@ class Home extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          Container(
+          SizedBox(
             height: 280,
             child: ListView.builder(
               padding: const EdgeInsetsDirectional.only(
