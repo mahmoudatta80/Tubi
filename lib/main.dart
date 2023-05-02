@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/modules/splash.dart';
+import 'package:movie_app/modules/splash/splash.dart';
 import 'package:movie_app/shared/network/local/cache_helper/shared_preference.dart';
-import 'package:movie_app/shared/network/remote/dio_helper.dart';
-import 'package:movie_app/shared/styles/theme.dart';
+import 'package:movie_app/shared/network/remote/dio_helper/dio_helper.dart';
+import 'package:movie_app/shared/styles/themes/theme.dart';
 import 'package:provider/provider.dart';
 import 'shared/network/local/state_management/my_provider.dart';
 

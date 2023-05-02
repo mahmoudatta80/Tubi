@@ -3,8 +3,8 @@ import 'package:movie_app/modules/layout_screens/home.dart';
 import 'package:movie_app/modules/layout_screens/profile.dart';
 import 'package:movie_app/modules/layout_screens/save.dart';
 import 'package:movie_app/shared/network/local/state_management/my_provider.dart';
-import 'package:movie_app/shared/network/remote/dio_helper.dart';
-import 'package:movie_app/shared/styles/icon_broken.dart';
+import 'package:movie_app/shared/network/remote/dio_helper/dio_helper.dart';
+import 'package:movie_app/shared/styles/icons/icon_broken.dart';
 import 'package:provider/provider.dart';
 import 'package:movie_app/models/api_models/movie_list.dart';
 

@@ -6,7 +6,7 @@ import 'package:movie_app/models/api_models/movie_list.dart';
 import 'package:movie_app/models/api_models/movie_model.dart';
 import 'package:movie_app/models/db_models/save_model.dart';
 import 'package:movie_app/shared/network/local/cache_helper/shared_preference.dart';
-import 'package:movie_app/shared/network/remote/dio_helper.dart';
+import 'package:movie_app/shared/network/remote/dio_helper/dio_helper.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 

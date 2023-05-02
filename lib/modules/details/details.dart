@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/api_models/movie_model.dart';
 import 'package:movie_app/models/db_models/save_model.dart';
-import 'package:movie_app/modules/display.dart';
+import 'package:movie_app/modules/display/display.dart';
 import 'package:movie_app/shared/network/local/state_management/my_provider.dart';
-import 'package:movie_app/shared/network/remote/dio_helper.dart';
-import 'package:movie_app/shared/styles/icon_broken.dart';
+import 'package:movie_app/shared/network/remote/dio_helper/dio_helper.dart';
+import 'package:movie_app/shared/styles/icons/icon_broken.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 

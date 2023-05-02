@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:movie_app/shared/styles/colors.dart';
+import 'package:movie_app/shared/styles/colors/colors.dart';
 
 class CustomTheme {
   static ThemeData lightTheme = ThemeData(

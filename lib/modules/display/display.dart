@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/api_models/movie_model.dart';
-import 'package:movie_app/shared/styles/icon_broken.dart';
+import 'package:movie_app/shared/styles/icons/icon_broken.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Display extends StatefulWidget {

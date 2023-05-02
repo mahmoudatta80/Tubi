@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/api_models/movie_model.dart';
-import 'package:movie_app/modules/details.dart';
+import 'package:movie_app/modules/details/details.dart';
 import 'package:movie_app/shared/network/local/search_delegate/movies_search_delegate.dart';
-import 'package:movie_app/shared/styles/icon_broken.dart';
+import 'package:movie_app/shared/styles/icons/icon_broken.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Home extends StatelessWidget {
