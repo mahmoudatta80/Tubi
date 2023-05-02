@@ -81,7 +81,7 @@ class Layout extends StatelessWidget {
         ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
-            color: Colors.grey.shade300,
+            color: Theme.of(context).primaryColor,
             borderRadius: const BorderRadius.only(
               topRight: Radius.circular(
                 30,

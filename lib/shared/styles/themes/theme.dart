@@ -24,7 +24,7 @@ class CustomTheme {
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: darkDefaultColor,
       elevation: 0,
       selectedItemColor: lightDefaultColor,
       type: BottomNavigationBarType.fixed,
@@ -88,11 +88,11 @@ class CustomTheme {
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: lightDefaultColor,
       elevation: 0,
-      selectedItemColor: lightDefaultColor,
+      selectedItemColor: darkDefaultColor,
       type: BottomNavigationBarType.fixed,
-      unselectedItemColor: Colors.black45,
+      unselectedItemColor: Colors.white38,
       showUnselectedLabels: false,
     ),
 
