@@ -16,7 +16,7 @@ void main() async{
 
   runApp(
     ChangeNotifierProvider<MyProvider>(
-      create: (context) => MyProvider()..changeAppMode(isLight: isLight),
+      create: (context) => MyProvider()..changeAppMode(isLight: isLight)..handleMovies(),
       child: const MyApp(),
     ),
   );
