@@ -59,7 +59,6 @@ class MyProvider extends ChangeNotifier {
   }
 
   static List<Map<String, String>> searchForMovie = [];
-  static List<Map<String, String>> searchForSavedMovie = [];
   List<Movie> movies = [];
   Map<int, bool> saved = {};
 
@@ -89,27 +88,15 @@ class MyProvider extends ChangeNotifier {
     }
   }
 
-  addedSavedItem(saveItem) {
-    saved[saveItem['rank']] = true;
-  }
-
-  handleSearchForSavedMovie(saveItem) {
-    searchForSavedMovie.add({
-      'title': saveItem['title'],
-      'id': saveItem['id'],
-    });
-  }
-
-  addedSavedItemAndHandleSearchForSavedMovie(List value) {
+  addedSavedItem(List value) {
     for (var saveItem in value) {
-      addedSavedItem(saveItem);
-      handleSearchForSavedMovie(saveItem);
+      saved[saveItem['rank']] = true;
     }
   }
 
   handleSavedMovies() {
     readAllSaveList().then((value) {
-      addedSavedItemAndHandleSearchForSavedMovie(value);
+      addedSavedItem(value);
     });
   }
 

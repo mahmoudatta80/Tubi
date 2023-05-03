@@ -264,7 +264,7 @@ class Details extends StatelessWidget {
                         Navigator.of(context).push(
                           PageTransition(
                             child:  Display(
-                              movie: movie,
+                              trailer: movie.trailer,
                             ),
                             type: PageTransitionType.fade,
                           ),

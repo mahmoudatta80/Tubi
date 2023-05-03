@@ -5,7 +5,7 @@ import 'package:movie_app/shared/styles/icons/icon_broken.dart';
 import 'package:page_transition/page_transition.dart';
 
 class MoviesSearchDelegate extends SearchDelegate {
-  List<Map> searchItem = MyProvider.searchForMovie;
+  List<Map<String, String>> searchItem = MyProvider.searchForMovie;
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -36,11 +36,11 @@ class MoviesSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     List<Map<String, String>> matchQuery = [];
-    for (var name in searchItem) {
-      if (name['title'].toLowerCase().contains(query.toLowerCase())) {
+    for (Map name in searchItem) {
+      if (name['title']!.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add({
-          'title': name['title'],
-          'id': name['id'],
+          'title': name['title']!,
+          'id': name['id']!,
         });
       }
     }
@@ -82,11 +82,11 @@ class MoviesSearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     List<Map<String, String>> matchQuery = [];
-    for (var name in searchItem) {
-      if (name['title'].toLowerCase().contains(query.toLowerCase())) {
+    for (Map name in searchItem) {
+      if (name['title']!.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add({
-          'title': name['title'],
-          'id': name['id'],
+          'title': name['title']!,
+          'id': name['id']!,
         });
       }
     }

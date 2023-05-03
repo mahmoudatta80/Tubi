@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/models/api_models/movie_model.dart';
-import 'package:movie_app/shared/styles/icons/icon_broken.dart';
+import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Display extends StatefulWidget {
-  Movie movie;
-
-  Display({Key? key, required this.movie}) : super(key: key);
+  String trailer;
+  Display({Key? key,required this.trailer}) : super(key: key);
 
   @override
   State<Display> createState() => _DisplayState();
@@ -17,7 +15,7 @@ class _DisplayState extends State<Display> {
 
   @override
   void initState() {
-    final videoId = YoutubePlayer.convertUrlToId(widget.movie.trailer);
+    final videoId = YoutubePlayer.convertUrlToId(widget.trailer);
     _controller = YoutubePlayerController(
       initialVideoId: videoId!,
     );
@@ -25,67 +23,43 @@ class _DisplayState extends State<Display> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
+      body: SafeArea(
+        child: YoutubePlayerBuilder(
+          player: YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+            progressIndicatorColor: Theme.of(context).primaryColor,
+          ),
+          builder: (context, player) => player,
+          onEnterFullScreen: () {
+            SystemChrome.setEnabledSystemUIMode(
+              SystemUiMode.manual,
+              overlays: [],
+            );
+            SystemChrome.setPreferredOrientations([
+              DeviceOrientation.landscapeLeft,
+              DeviceOrientation.landscapeRight,
+            ]);
           },
-          icon: const Icon(
-            IconBroken.Arrow___Left,
-          ),
+          onExitFullScreen: () {
+            SystemChrome.setEnabledSystemUIMode(
+              SystemUiMode.manual,
+              overlays: SystemUiOverlay.values,
+            );
+            SystemChrome.setPreferredOrientations(
+              DeviceOrientation.values,
+            );
+          },
         ),
-        title: Text(
-          'Trailer',
-          style: TextStyle(
-            color: Theme.of(context).primaryColorLight,
-          ),
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          YoutubePlayerBuilder(
-            player: YoutubePlayer(
-              controller: _controller,
-            ),
-            builder: (context, player) => YoutubePlayer(
-              controller: _controller,
-              showVideoProgressIndicator: true,
-              bottomActions: [
-                CurrentPosition(),
-                ProgressBar(
-                  isExpanded: true,
-                ),
-                const PlaybackSpeedButton(),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    widget.movie.title,
-                    style: Theme.of(context).textTheme.headline1,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '${widget.movie.year}',
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

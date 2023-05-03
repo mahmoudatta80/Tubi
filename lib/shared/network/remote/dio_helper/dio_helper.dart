@@ -25,7 +25,7 @@ class DioHelper {
   static Future<MovieList> getAllMovies() async {
     allMovies.options.headers = {
       'content-type': 'application/octet-stream',
-      'X-RapidAPI-Key': '0e5f431611msh87d73d2c632d4c6p1c61bejsn558049ee64ed',
+      'X-RapidAPI-Key': '337fcc74e9mshe0ed7348687914ep19d34ajsn68f34ad38b4d',
       'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com',
     };
 
@@ -44,7 +44,7 @@ class DioHelper {
   static Future<Movie> getMovieDetails(String id) async {
     singleMovie.options.headers = {
       'content-type': 'application/octet-stream',
-      'X-RapidAPI-Key': '0e5f431611msh87d73d2c632d4c6p1c61bejsn558049ee64ed',
+      'X-RapidAPI-Key': '337fcc74e9mshe0ed7348687914ep19d34ajsn68f34ad38b4d',
       'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com',
     };
 
